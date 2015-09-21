@@ -3,8 +3,10 @@ require 'parallel'
 require 'date'
 
 times = 100000000
-thread_number = 1
+thread_number = 4
 puts "#{times}回ループします"
+
+charlist = ((0..9).to_a + ("a".."z").to_a + ("A".."Z").to_a)
 
 starttime = Time.now
 startmin = starttime.min
@@ -20,7 +22,7 @@ end
 
 Parallel.map(list, :in_threads => thread_number) do |name|
   for count in (times / thread_number).times
-    ((0..9).to_a + ("a".."z").to_a + ("A".."Z").to_a).sample(10).join
+    charlist.sample(10)
   end
   puts "Thread#{name} completed!"
 end

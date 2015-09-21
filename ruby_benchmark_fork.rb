@@ -6,6 +6,8 @@ times = 100000000
 thread_number = 8
 puts "#{times}回ループします"
 
+charlist = ((0..9).to_a + ("a".."z").to_a + ("A".."Z").to_a)
+
 starttime = Time.now
 startmin = starttime.min
 startsec = starttime.sec
@@ -17,7 +19,7 @@ puts "start : #{startmin}:#{startsec}.#{startmsec}"
 (1..thread_number).each do |i|
   fork do
     for count in (times / thread_number).times
-   	 ((0..9).to_a + ("a".."z").to_a + ("A".."Z").to_a).sample(10).join
+   	 charlist.sample(10)
   	end
   end
 end

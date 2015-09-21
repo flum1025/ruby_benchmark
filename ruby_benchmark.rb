@@ -4,15 +4,18 @@ require 'date'
 times = 100000000
 puts "#{times}回ループします"
 
+charlist = ((0..9).to_a + ("a".."z").to_a + ("A".."Z").to_a)
+
 starttime = Time.now
 startmin = starttime.min
 startsec = starttime.sec
 startusec = starttime.usec
 startmsec = (startusec / 1000.0).round
 puts "start : #{startmin}:#{startsec}.#{startmsec}"
+
 i = 0
 while i < times do
-  ((0..9).to_a + ("a".."z").to_a + ("A".."Z").to_a).sample(10).join
+  charlist.sample(10)
   i += 1
 end
 
